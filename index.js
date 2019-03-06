@@ -1,6 +1,6 @@
 let cards = [
-    {title: "Yay", body: "Hi, how are you doing?", color: "blue"},
-    {title: "Second", body: "This is boring.", color: "red"}
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"}
 ]
 
 let data = {

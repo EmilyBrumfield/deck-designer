@@ -1,7 +1,14 @@
-.blue-card {
-    background-color: lightblue
+.card-header {
+    border: 1px solid black;
+    font-size: 1.5em;
+    text-align: center;
+    width: 14vw;
 }
 
-.green-card {
-    background-color: lightgreen
+.card-body {
+    border: 1px solid black;
+    border-top: 0px solid black;
+    height: 12vw;
+    padding: 1vw;
+    width: 12vw;
 }
