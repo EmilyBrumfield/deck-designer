@@ -15,6 +15,7 @@ let app = new Vue({
     methods: {
       resetDeck: function () {
         this.cards = [].concat(this.deck);
+        this.drawn = [];
       },
       drawCard: function () {
         this.drawn = this.drawn.concat(this.cards[0]);
