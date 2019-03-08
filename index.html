@@ -15,7 +15,11 @@
           <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
           <div class="card-body">{{card.body}}</div>
         <br />
+      </li>
+      <button v-on:click="drawCard">Draw Card</button>
+      <button v-on:click="resetDeck">Reset Deck</button>
     </div>
+
 
     <script src="./index.js"></script>
   </body>
