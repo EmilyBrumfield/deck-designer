@@ -12,3 +12,8 @@
     padding: 1vw;
     width: 12vw;
 }
+
+.card-number {
+    text-align: center;
+    font-size: 3em;
+}

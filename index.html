@@ -11,13 +11,18 @@
   <body>
 
     <div id="app">
+      <button v-on:click="drawCard">Draw Card</button>
+      <button v-on:click="resetDeck">Reset Deck</button>
+      
+      <div class="card-header" v-bind:style="{color: 'purple'}">DECK</div>
+      <div class="card-body card-number">{{cards.length}}</div>
+      <br />
+
       <li v-for="card in cards">
           <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
           <div class="card-body">{{card.body}}</div>
         <br />
       </li>
-      <button v-on:click="drawCard">Draw Card</button>
-      <button v-on:click="resetDeck">Reset Deck</button>
       <br />
       <li v-for="card in drawn">
         <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
