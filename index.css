@@ -1,8 +1,13 @@
+.card {
+    border: 1px solid black;
+    width: 12vw;
+    height: 16vw;
+}
+
 .card-header {
     border: 1px solid black;
     font-size: 1.5em;
     text-align: center;
-    width: 14vw;
 }
 
 .card-body {
@@ -10,7 +15,6 @@
     border-top: 0px solid black;
     height: 12vw;
     padding: 1vw;
-    width: 12vw;
 }
 
 .card-number {

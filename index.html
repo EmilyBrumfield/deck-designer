@@ -18,7 +18,7 @@
     <div id="app">
       <span>Click deck to draw, right-click to reset</span>
       
-      <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck">
+      <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="card">
         <div class="card-header" v-bind:style="{color: 'purple'}">DECK</div>
         <div class="card-body card-number">{{cards.length}}</div>
         <br />
