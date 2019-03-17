@@ -1,3 +1,6 @@
+//deck should eventually combine different arrays for different color values or titles or whatever
+//so that only the contents need to be different each time, saving work
+
 let deck = [
     {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
     {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
