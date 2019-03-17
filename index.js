@@ -4,6 +4,33 @@
 let deck = [
     {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
     {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
+    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
+    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
     {title: "Event!", body: "The weather gets worse.", color: "blue"}
 ]
 
@@ -23,7 +50,8 @@ let app = new Vue({
       },
       drawCard: function () {  //draws a random card from Cards, adds it to Drawn
         let randomNumber = Math.floor(Math.random() * this.cards.length)
-        this.drawn = this.drawn.concat(this.cards[randomNumber]);
+        //this variant reverses the order drawn cards are displayed: this.drawn = this.drawn.concat(this.cards[randomNumber]);
+        this.drawn.unshift(this.cards[randomNumber]) 
         this.cards.splice(randomNumber, 1); //I prefer using immutable alternatives to splice, but this is much more efficient here
       }
     }

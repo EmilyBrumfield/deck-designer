@@ -15,31 +15,28 @@
   </head>
   <body>
 
-    <div id="app">
-      <span>Click deck to draw, right-click to reset</span>
-      
-      <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="card">
-        <div class="card-header" v-bind:style="{color: 'purple'}">DECK</div>
-        <div class="card-body card-number">{{cards.length}}</div>
-        <br />
+    <div id="app" class="container-fluid">
+      <span>Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
+      <div class="row">
+        <div class="col">
+          <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="card">
+            <div class="card-header" v-bind:style="{color: 'purple'}">DECK</div>
+            <div class="card-body card-number">{{cards.length}}</div>
+            <br />
+          </div>
+        </div>
+
+        <div class="col-10">
+          <li v-for="card in drawn" class="deck-drawn">
+            <div class="card">
+              <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
+              <div class="card-body">{{card.body}}</div>
+            </div>
+            <br />
+          </li>
+        </div>
       </div>
 
-      <!--
-      <li v-for="card in cards">
-          <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
-          <div class="card-body">{{card.body}}</div>
-        <br />
-      </li>
-      <br />
-      -->
-
-      <li v-for="card in drawn" class="deck-drawn">
-        <div class="card">
-          <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
-          <div class="card-body">{{card.body}}</div>
-        </div>
-      <br />
-    </li>
     </div>
 
     
