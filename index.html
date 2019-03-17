@@ -27,10 +27,12 @@
       </li>
       <br />
       -->
-      
-      <li v-for="card in drawn">
-        <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
-        <div class="card-body">{{card.body}}</div>
+
+      <li v-for="card in drawn" class="deck-drawn">
+        <div class="card">
+          <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
+          <div class="card-body">{{card.body}}</div>
+        </div>
       <br />
     </li>
     </div>
