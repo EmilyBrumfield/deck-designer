@@ -1,23 +1,32 @@
-.card {
+html {
+    background-image: url("./background.jpg");
+}
+
+#app {
+    background-image: url("./background.jpg");
+}
+
+.deck-card {
     border: 1px solid black;
+    background-color: white;
     width: 12vw;
     height: 16vw;
+    border-radius: 20px;
 }
 
-.card-header {
-    border: 1px solid black;
+.deck-card-header {
     font-size: 1.5em;
     text-align: center;
+    border-collapse: separate;
 }
 
-.card-body {
-    border: 1px solid black;
-    border-top: 0px solid black;
+.deck-card-body {
     height: 12vw;
     padding: 1vw;
+    border-collapse: separate;
 }
 
-.card-number {
+.deck-card-number {
     text-align: center;
     font-size: 3em;
 }

@@ -1,38 +1,131 @@
 //deck should eventually combine different arrays for different color values or titles or whatever
 //so that only the contents need to be different each time, saving work
 
+//creates a monster card
+function Monster(body, title) {
+  if (title === undefined) {
+   this.title = "Monster";
+  } else {
+    this.title = title
+  }
+
+  if (body === undefined) {
+    this.body = "Monsters appear!";
+   } else {
+     this.body = body
+  }
+
+  this.color = "red";
+}
+
+
+//creates an event card
+function Event(body, title) {
+  if (title === undefined) {
+   this.title = "Event";
+  } else {
+    this.title = title
+  }
+
+  if (body === undefined) {
+    this.body = "Something happens!";
+   } else {
+     this.body = body
+  }
+
+  this.color = "blue";
+}
+
+//creates a treasure card
+function Treasure(body, title) {
+  if (title === undefined) {
+   this.title = "Treasure";
+  } else {
+    this.title = title
+  }
+
+  if (body === undefined) {
+    this.body = "Found some treasure!";
+   } else {
+     this.body = body
+  }
+
+  this.color = "green";
+}
+
 let deck = [
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
-    {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
-    {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
-    {title: "Event!", body: "The weather gets worse.", color: "blue"},
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  {title: "Quest", body: "You discover a map to the Temple of Skulls, along with a key to its secret entrance.", color: "orange"},
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  new Monster("8 bugbears approach."),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better.")
+]
+
+/*
+let deck = [
+  new Monster("Orcs!", "Bob"),
+  new Monster("Bugbears!"),
+  new Monster(),
+  new Monster("Ogres!"),
+  new Monster("Ninjas!"),
+  new Treasure("You find a potion of healing."),
+  new Event("The weather gets worse."),
+  new Event("The weather gets better."),
+  {title: "Unique", body: "This card is unique.", color: "purple"}
+]
+*/
+
+/*
+let deck = [
     {title: "Orcs!", body: "1d6 orcs appear!", color: "red"},
     {title: "Treasure!", body: "You find a potion of healing.", color: "green"},
     {title: "Event!", body: "The weather gets worse.", color: "blue"}
 ]
+*/
 
 let data = {
   deck: deck,  

@@ -11,26 +11,25 @@
     <script src="./node_modules/vue/dist/vue.js"></script>   
     <script src="./node_modules/bootstrap-vue/dist/bootstrap-vue.js"></script>
     
-    <title>Template</title>
+    <title>Unnamed Card Drawing App</title>
   </head>
   <body>
 
     <div id="app" class="container-fluid">
-      <span>Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
+      <span style="background-color: white">Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
       <div class="row">
         <div class="col">
-          <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="card">
-            <div class="card-header" v-bind:style="{color: 'purple'}">DECK</div>
-            <div class="card-body card-number">{{cards.length}}</div>
-            <br />
+          <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="deck-card">
+            <div class="deck-card-header" v-bind:style="{color: 'purple'}">DECK</div>
+            <div class="deck-card-body deck-card-number">{{cards.length}}</div>
           </div>
         </div>
 
         <div class="col-10">
           <li v-for="card in drawn" class="deck-drawn">
-            <div class="card">
-              <div class="card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
-              <div class="card-body">{{card.body}}</div>
+            <div class="deck-card">
+              <div class="deck-card-header" v-bind:style="{color: card.color}">{{card.title}}</div>
+              <div class="deck-card-body">{{card.body}}</div>
             </div>
             <br />
           </li>
