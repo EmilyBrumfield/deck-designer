@@ -23,6 +23,18 @@
             <div class="deck-card-header" v-bind:style="{color: 'purple'}">DECK</div>
             <div class="deck-card-body deck-card-number">{{cards.length}}</div>
           </div>
+          
+          <div>
+            <b-dropdown id="ddDeck" text="Deck" class="m-md-3">
+              <b-dropdown-item>First Action</b-dropdown-item>
+              <b-dropdown-item>Second Action</b-dropdown-item>
+              <b-dropdown-item>Third Action</b-dropdown-item>
+              <b-dropdown-divider />
+              <b-dropdown-item active>Active action</b-dropdown-item>
+              <b-dropdown-item disabled>Disabled action</b-dropdown-item>
+            </b-dropdown>
+          </div>
+
         </div>
 
         <div class="col-10">
@@ -34,6 +46,7 @@
             <br />
           </li>
         </div>
+
       </div>
 
     </div>

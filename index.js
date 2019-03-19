@@ -1,3 +1,14 @@
+/*
+TO DO:
+--Choose decks from app rather than from the JavaScript file; start with dropdown box or something
+--Card creator
+--Export deck
+--Import deck
+--Combine and split decks
+--Multiple decks
+--Actually useful sample decks
+*/
+
 function Monster(body, title, color) {
 
   this.body = body;
@@ -63,7 +74,7 @@ let sampleDeck = [
   new Monster("1d8 bugbears approach."),
   new Treasure("You find a potion of healing."),
   new Event("The weather gets worse."),
-  new Event("The weather gets better."),
+  new Event("The weather gets better.", undefined, "purple"),
   {title: "Quest", body: "You discover a map to the Temple of Skulls, along with a key to its secret entrance.", color: "orange"}
 ]
 
