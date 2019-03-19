@@ -2,55 +2,64 @@
 //so that only the contents need to be different each time, saving work
 
 //creates a monster card
-function Monster(body, title) {
-  if (title === undefined) {
-   this.title = "Monster";
-  } else {
-    this.title = title
-  }
+function Monster(body, title, color) {
+
+  this.body = body;
+  this.title = title;
+  this.color = color;
 
   if (body === undefined) {
     this.body = "Monsters appear!";
-   } else {
-     this.body = body
   }
 
-  this.color = "red";
+  if (title === undefined) {
+   this.title = "Monster";
+  }
+
+  
+  if (color === undefined) {
+    this.color = "red";
+  }
 }
 
+function Event(body, title, color) {
 
-//creates an event card
-function Event(body, title) {
-  if (title === undefined) {
-   this.title = "Event";
-  } else {
-    this.title = title
-  }
+  this.body = body;
+  this.title = title;
+  this.color = color;
 
   if (body === undefined) {
     this.body = "Something happens!";
-   } else {
-     this.body = body
   }
 
-  this.color = "blue";
+  if (title === undefined) {
+   this.title = "Event";
+  }
+
+  
+  if (color === undefined) {
+    this.color = "blue";
+  }
 }
 
-//creates a treasure card
-function Treasure(body, title) {
-  if (title === undefined) {
-   this.title = "Treasure";
-  } else {
-    this.title = title
-  }
+function Treasure(body, title, color) {
+
+  this.body = body;
+  this.title = title;
+  this.color = color;
 
   if (body === undefined) {
-    this.body = "Found some treasure!";
-   } else {
-     this.body = body
+    this.body = "Found treasure!";
   }
 
-  this.color = "green";
+  if (title === undefined) {
+   this.title = "Treasure";
+  }
+
+  
+  if (color === undefined) {
+    this.color = "green";
+  }
 }
 
 let deck = [
@@ -58,51 +67,7 @@ let deck = [
   new Treasure("You find a potion of healing."),
   new Event("The weather gets worse."),
   new Event("The weather gets better."),
-  {title: "Quest", body: "You discover a map to the Temple of Skulls, along with a key to its secret entrance.", color: "orange"},
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better."),
-  new Monster("8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better.")
+  {title: "Quest", body: "You discover a map to the Temple of Skulls, along with a key to its secret entrance.", color: "orange"}
 ]
 
 /*
@@ -142,10 +107,12 @@ let app = new Vue({
         this.drawn = [];
       },
       drawCard: function () {  //draws a random card from Cards, adds it to Drawn
-        let randomNumber = Math.floor(Math.random() * this.cards.length)
-        //this variant reverses the order drawn cards are displayed: this.drawn = this.drawn.concat(this.cards[randomNumber]);
-        this.drawn.unshift(this.cards[randomNumber]) 
-        this.cards.splice(randomNumber, 1); //I prefer using immutable alternatives to splice, but this is much more efficient here
+        if (this.cards.length > 0) {
+          let randomNumber = Math.floor(Math.random() * this.cards.length)
+          //this variant reverses the order drawn cards are displayed: this.drawn = this.drawn.concat(this.cards[randomNumber]);
+          this.drawn.unshift(this.cards[randomNumber]) 
+          this.cards.splice(randomNumber, 1); //I prefer using immutable alternatives to splice, but this is much more efficient here
+        }
       }
     }
 })
