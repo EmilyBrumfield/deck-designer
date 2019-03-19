@@ -25,10 +25,9 @@
           </div>
           
           <div>
-            <b-dropdown id="ddDeck" text="Deck" class="m-md-3">
-              <b-dropdown-item>First Action</b-dropdown-item>
-              <b-dropdown-item>Second Action</b-dropdown-item>
-              <b-dropdown-item>Third Action</b-dropdown-item>
+            <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
+              <b-dropdown-item-button v-on:click="setDeck('sampleDeck')">Sample Deck</b-dropdown-item-button>
+              <b-dropdown-item-button v-on:click="setDeck('cthulhuDeck')">Lovecraft Deck</b-dropdown-item-button>
               <b-dropdown-divider />
               <b-dropdown-item active>Active action</b-dropdown-item>
               <b-dropdown-item disabled>Disabled action</b-dropdown-item>

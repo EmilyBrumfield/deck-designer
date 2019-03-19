@@ -1,6 +1,6 @@
 /*
 TO DO:
---Choose decks from app rather than from the JavaScript file; start with dropdown box or something
+--Better method for filling the dropdown list with decks
 --Card creator
 --Export deck
 --Import deck
@@ -90,10 +90,16 @@ let cthulhuDeck = [
   new Monster("Gugs")
 ]
 
-let deck = sampleDeck;
+let decks = {
+  cthulhuDeck: cthulhuDeck,
+  sampleDeck: sampleDeck
+}
+
+let deck = decks.cthulhuDeck;
 
 let data = {
-  deck: deck,  
+  decks: decks,
+  deck: deck,
   cards: [].concat(deck),
   drawn: [],
 }
@@ -102,6 +108,10 @@ let app = new Vue({
     el: "#app",
     data: data,
     methods: {
+      setDeck: function (newDeck) {
+        this.deck = decks[newDeck];
+        this.resetDeck();
+      },
       resetDeck: function () {  //resets Cards to the default deck, clears Drawn cards
         this.cards = [].concat(this.deck);
         this.drawn = [];
