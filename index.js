@@ -1,6 +1,8 @@
 /*
 TO DO:
 --Better method for filling the dropdown list with decks
+--Fix display for many cards at once
+--Change mockup card creator to real one
 --Card creator
 --Export deck
 --Import deck
@@ -102,6 +104,12 @@ let data = {
   deck: deck,
   cards: [].concat(deck),
   drawn: [],
+  newDeck: [],
+  newCard: {
+    title: "",
+    color: "black",
+    body: ""
+  },
   viewMode: "maker"
 }
 
@@ -123,6 +131,20 @@ let app = new Vue({
           //this variant reverses the order drawn cards are displayed: this.drawn = this.drawn.concat(this.cards[randomNumber]);
           this.drawn.unshift(this.cards[randomNumber]) 
           this.cards.splice(randomNumber, 1); //I prefer using immutable alternatives to splice, but this is much more efficient here
+        }
+      },
+      addCard: function (title, color, body) { //adds custom card to deck
+        this.newCard.title = document.getElementById("card-title-input").value;
+        this.newCard.color = document.getElementById("card-color-input").value;
+        this.newCard.body = document.getElementById("card-body-input").value;
+        this.newDeck.unshift(this.newCard);
+        this.decks.sampleDeck = this.newDeck.concat(this.decks.sampleDeck);
+      },
+      changeMode: function() {
+        if (this.viewMode === "main") {
+          this.viewMode = "maker"
+        } else {
+          this.viewMode = "main"
         }
       }
     }

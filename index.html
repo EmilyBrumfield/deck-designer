@@ -16,6 +16,7 @@
   <body>
 
     <div id="app" class="container-fluid">
+    <button v-on:click="changeMode">Mode</button>
     <!--- MAIN SCREEN -->
       <div v-if="viewMode === 'main'">
         <span style="background-color: white">Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
@@ -58,9 +59,17 @@
           <div class="col-2"><input type="text" value="red" id="card-color-input"></input></div>
       </div>
       <div class="row">  
-        <div class="col-1"><label for="card-body-input">Card Body: </label></div>
-        <div class="col-2"><textarea id="card-body-input"></textarea></div>
+        <div class="col-1">
+          <label for="card-body-input">Card Body: </label>
+        </div>
+        <div class="col-2">
+          <textarea id="card-body-input"></textarea>
+        </div>
       </div>
+      <div class="row">
+        <div class="col-1">
+          <button v-on:click="addCard">Add</button>
+        </div>
     </div>
 
     
