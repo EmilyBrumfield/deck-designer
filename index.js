@@ -102,6 +102,7 @@ let data = {
   deck: deck,
   cards: [].concat(deck),
   drawn: [],
+  viewMode: "maker"
 }
 
 let app = new Vue({

@@ -6,6 +6,20 @@ html {
     background-image: url("./background.jpg");
 }
 
+label {
+    background-color: white
+}
+
+textarea {
+    height: 12vw;
+    padding: 1vw;
+    width: 15vw;
+}
+
+input {
+    width: 15vw;
+}
+
 .deck-card {
     border: 1px solid black;
     background-color: white;
