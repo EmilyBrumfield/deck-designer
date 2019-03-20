@@ -17,6 +17,8 @@
 
     <div id="app" class="container-fluid">
     <button v-on:click="changeMode">Mode</button>
+    <br />
+    <br />
     <!--- MAIN SCREEN -->
       <div v-if="viewMode === 'main'">
         <span style="background-color: white">Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
@@ -38,6 +40,9 @@
                 <b-dropdown-item-button v-on:click="setDeck('cthulhuDeck')">
                   Lovecraft Deck
                 </b-dropdown-item-button>
+                <b-dropdown-item-button v-on:click="setDeck('customDeck')">
+                    Custom Deck
+                  </b-dropdown-item-button>
               </b-dropdown>
             </div>
           </div>
@@ -83,7 +88,36 @@
       </div>
       <!--- DECK DISPLAY SCREEN -->
       <div v-else-if="viewMode === 'deckDisplay'">
-        <button>Lorem</button>
+        <div class="row">
+          <div class="col">
+            <div>
+              <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
+                <b-dropdown-item-button v-on:click="setDeck('sampleDeck')">
+                  Sample Deck
+                </b-dropdown-item-button>
+                <b-dropdown-item-button v-on:click="setDeck('cthulhuDeck')">
+                  Lovecraft Deck
+                </b-dropdown-item-button>
+                <b-dropdown-item-button v-on:click="setDeck('customDeck')">
+                    Custom Deck
+                  </b-dropdown-item-button>
+              </b-dropdown>
+            </div>    
+          </div>
+          <div class="col-10">
+              <li v-for="card in deck" class="deck-drawn">
+                <div class="deck-card">
+                  <div class="deck-card-header" v-bind:style="{color: card.color}">
+                    {{card.title}}
+                  </div>
+                  <div class="deck-card-body">
+                    {{card.body}}
+                  </div>
+                </div>
+                <br />
+              </li>
+            </div>
+        </div>
       </div>
     </div>
     

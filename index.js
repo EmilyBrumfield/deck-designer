@@ -97,7 +97,8 @@ let cthulhuDeck = [
 
 let decks = {
   cthulhuDeck: cthulhuDeck,
-  sampleDeck: sampleDeck
+  sampleDeck: sampleDeck,
+  customDeck: []
 }
 
 let deck = decks.cthulhuDeck;
@@ -107,7 +108,6 @@ let data = {
   deck: deck,
   cards: [].concat(deck),
   drawn: [],
-  newDeck: [],
   newCard: {
     title: "",
     color: "black",
@@ -140,15 +140,14 @@ let app = new Vue({
         this.newCard.title = document.getElementById("card-title-input").value;
         this.newCard.color = document.getElementById("card-color-input").value;
         this.newCard.body = document.getElementById("card-body-input").value;
-        this.newDeck.unshift(this.newCard);
-        this.decks.sampleDeck = this.newDeck.concat(this.decks.sampleDeck);
+        let newDeck = [].concat(this.newCard);
+        this.decks.customDeck = this.decks.customDeck.concat(newDeck);
       },
       changeMode: function() {
         if (this.viewMode === "main") {
           this.viewMode = "maker"
         }
         else if (this.viewMode === "maker") {
-          alert("Worked")
           this.viewMode = "deckDisplay"
         }
         else {
