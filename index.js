@@ -108,11 +108,6 @@ let data = {
   deck: deck,
   cards: [].concat(deck),
   drawn: [],
-  newCard: {
-    title: "",
-    color: "black",
-    body: ""
-  },
   viewMode: "maker"
 }
 
@@ -137,11 +132,13 @@ let app = new Vue({
         }
       },
       addCard: function (title, color, body) { //adds custom card to deck
-        this.newCard.title = document.getElementById("card-title-input").value;
-        this.newCard.color = document.getElementById("card-color-input").value;
-        this.newCard.body = document.getElementById("card-body-input").value;
-        let newDeck = [].concat(this.newCard);
-        this.decks.customDeck = this.decks.customDeck.concat(newDeck);
+        let newCard = {
+          title: document.getElementById("card-title-input").value,
+          color: document.getElementById("card-color-input").value,
+          body: document.getElementById("card-body-input").value
+
+        };
+        this.decks.customDeck.unshift(newCard)
       },
       changeMode: function() {
         if (this.viewMode === "main") {
