@@ -1,5 +1,8 @@
 /*
 TO DO:
+--Use webpack
+--Formatting options as part of deck properties object, or something
+--Third page that displays decks
 --Better method for filling the dropdown list with decks
 --Fix display for many cards at once
 --Change mockup card creator to real one
@@ -7,7 +10,7 @@ TO DO:
 --Export deck
 --Import deck
 --Combine and split decks
---Multiple decks
+--Multiple decks at once
 --Actually useful sample decks
 */
 
@@ -143,7 +146,12 @@ let app = new Vue({
       changeMode: function() {
         if (this.viewMode === "main") {
           this.viewMode = "maker"
-        } else {
+        }
+        else if (this.viewMode === "maker") {
+          alert("Worked")
+          this.viewMode = "deckDisplay"
+        }
+        else {
           this.viewMode = "main"
         }
       }
