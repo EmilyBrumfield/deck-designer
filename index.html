@@ -89,6 +89,8 @@
         <div class="row">
           <div class="col-1">
             <button v-on:click="addCard">Add</button>
+            <button v-on:click="exportToJsonFile">Export</button>
+            <a id="downloadThing"></a>
           </div>
         </div>
       </div>
@@ -105,7 +107,7 @@
                   Lovecraft Deck
                 </b-dropdown-item-button>
                 <b-dropdown-item-button v-on:click="setDeck('customDeck')">
-                    Custom Deck
+                  Custom Deck
                   </b-dropdown-item-button>
               </b-dropdown>
             </div>    

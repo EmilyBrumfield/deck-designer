@@ -1,16 +1,15 @@
 /*
 TO DO:
---Use webpack
---Formatting options as part of deck properties object, or something
---Third page that displays decks
+
+(high priority)
+--Options to delete cards, combine and split decks
+--Import/export deck as JSON file
+--Main mode can show multiple decks at once
+
+(low priority)
+--Formatting options as part of deck properties object
 --Better method for filling the dropdown list with decks
 --Fix display for many cards at once
---Change mockup card creator to real one
---Card creator
---Export deck
---Import deck
---Combine and split decks
---Multiple decks at once
 --Actually useful sample decks
 */
 
@@ -150,6 +149,18 @@ let app = new Vue({
         else {
           this.viewMode = "main"
         }
+      },
+      exportToJsonFile: function() {
+        let jsonData = this.decks.customDeck;
+        let dataStr = JSON.stringify(jsonData);
+        let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+        
+        let exportFileDefaultName = 'customDeck.json';
+        
+        let linkElement = document.getElementById('downloadThing');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
       }
     }
 })
