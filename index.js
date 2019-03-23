@@ -1,9 +1,11 @@
 /*
 TO DO:
+(top priority)
+--Add view to custom deck creator
+--Only allow delete function on custom deck cards, in custom deck creator
 
 (high priority)
---Options to delete cards, combine and split decks
---Import/export deck as JSON file
+--Import deck as JSON file
 --Main mode can show multiple decks at once
 
 (low priority)
@@ -11,6 +13,31 @@ TO DO:
 --Better method for filling the dropdown list with decks
 --Fix display for many cards at once
 --Actually useful sample decks
+--Take functions out of Vue declaration, declare them ahead of time then copy in Vue like with the data
+*/
+
+
+function exportToJsonFile() {
+  let jsonData = this.decks.customDeck;
+  let dataStr = JSON.stringify(jsonData);
+  let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+  
+  let exportFileDefaultName = 'customDeck.json';
+  
+  let linkElement = document.getElementById('downloadThing');
+  linkElement.setAttribute('href', dataUri);
+  linkElement.setAttribute('download', exportFileDefaultName);
+  linkElement.click();
+}
+
+/*CHANGE THE DROPHANDLER AND JSONEXPORTER
+********************************************************************************
+********************************************************************************
+********************************************************************************
+********************************************************************************
+********************************************************************************
+********************************************************************************
+********************************************************************************
 */
 
 function Monster(body, title, color) {
@@ -139,6 +166,9 @@ let app = new Vue({
         };
         this.decks.customDeck.unshift(newCard)
       },
+      removeCard: function (index) { //removes custom card from deck
+          this.decks.customDeck.shift()
+      },
       changeMode: function() {
         if (this.viewMode === "main") {
           this.viewMode = "maker"
@@ -150,17 +180,6 @@ let app = new Vue({
           this.viewMode = "main"
         }
       },
-      exportToJsonFile: function() {
-        let jsonData = this.decks.customDeck;
-        let dataStr = JSON.stringify(jsonData);
-        let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-        
-        let exportFileDefaultName = 'customDeck.json';
-        
-        let linkElement = document.getElementById('downloadThing');
-        linkElement.setAttribute('href', dataUri);
-        linkElement.setAttribute('download', exportFileDefaultName);
-        linkElement.click();
-      }
+      exportToJsonFile: exportToJsonFile
     }
 })

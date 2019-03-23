@@ -113,10 +113,10 @@
             </div>    
           </div>
           <div class="col-10">
-              <li v-for="card in deck" class="deck-drawn">
-                <div class="deck-card">
+              <li v-for="(card, index) in deck" class="deck-drawn">
+                <div class="deck-card" v-on:click="removeCard(index)">
                   <div class="deck-card-header" v-bind:style="{color: card.color}">
-                    {{card.title}}
+                    {{card.title}} {{index}}
                   </div>
                   <div class="deck-card-body">
                     {{card.body}}

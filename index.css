@@ -48,3 +48,8 @@ input {
 .deck-drawn {
     display: inline-flex;
 }
+
+#drop-zone {
+    background-color: white;
+    height: 15vw;
+}
