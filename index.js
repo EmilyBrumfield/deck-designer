@@ -121,10 +121,19 @@ let cthulhuDeck = [
   new Monster("Gugs")
 ]
 
+let customDeck = [
+  new Monster("Susie"),
+  new Treasure("Dice"),
+  new Treasure("Pie"),
+  new Monster("Pumpkin"),
+  new Event("Someone spilled grape juice"),
+  new Event("Someone ate the dice")
+]
+
 let decks = {
   cthulhuDeck: cthulhuDeck,
   sampleDeck: sampleDeck,
-  customDeck: []
+  customDeck: customDeck
 }
 
 let deck = decks.cthulhuDeck;
@@ -167,7 +176,7 @@ let app = new Vue({
         this.decks.customDeck.unshift(newCard)
       },
       removeCard: function (index) { //removes custom card from deck
-          this.decks.customDeck.shift()
+          this.decks.customDeck.splice(index, 1)
       },
       changeMode: function() {
         if (this.viewMode === "main") {
