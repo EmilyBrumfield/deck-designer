@@ -96,7 +96,7 @@
         <div class="row">
           <div class="col-10">
             <li v-for="(card, index) in decks.customDeck" class="deck-drawn">
-              <div class="deck-card" v-on:click="removeCard(index)">
+              <div class="deck-card" v-on:click="loadCard(index)" v-on:click.right.prevent="removeCard(index)">
                 <div class="deck-card-header" v-bind:style="{color: card.color}">
                   {{card.title}}
                 </div>

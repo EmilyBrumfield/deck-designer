@@ -1,19 +1,22 @@
 /*
 TO DO:
-(top priority)
---Add view to custom deck creator
---Only allow delete function on custom deck cards, in custom deck creator
 
 (high priority)
 --Import deck as JSON file
 --Main mode can show multiple decks at once
+--Make premade side decks that can be easily added with card maker
 
 (low priority)
---Formatting options as part of deck properties object
 --Better method for filling the dropdown list with decks
 --Fix display for many cards at once
 --Actually useful sample decks
 --Take functions out of Vue declaration, declare them ahead of time then copy in Vue like with the data
+
+(final touches)
+--Fully responsive design
+
+(other)
+--Dice roller for FU/PbtA
 */
 
 
@@ -178,6 +181,11 @@ let app = new Vue({
       removeCard: function (index) { //removes custom card from deck
           this.decks.customDeck.splice(index, 1)
       },
+      loadCard: function (index) { //adds current card's data to the card maker; the reverse of addCard
+        document.getElementById("card-title-input").value = this.decks.customDeck[index].title;
+        document.getElementById("card-color-input").value = this.decks.customDeck[index].color;
+        document.getElementById("card-body-input").value = this.decks.customDeck[index].body;
+      },          
       changeMode: function() {
         if (this.viewMode === "main") {
           this.viewMode = "maker"
