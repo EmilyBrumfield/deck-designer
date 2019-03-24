@@ -3,6 +3,7 @@ TO DO:
 
 (high priority)
 --Import deck as JSON file
+--Make file drop zone do something
 
 (low priority)
 --Fix display for many cards at once
@@ -10,6 +11,7 @@ TO DO:
 --Take functions out of Vue declaration, declare them ahead of time then copy in Vue like with the data
 
 (final touches)
+--Make UI look professional
 --Fully responsive design
 
 (theoretical second version)
