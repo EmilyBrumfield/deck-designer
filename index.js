@@ -3,11 +3,8 @@ TO DO:
 
 (high priority)
 --Import deck as JSON file
---Main mode can show multiple decks at once
---Make premade side decks that can be easily added with card maker
 
 (low priority)
---Better method for filling the dropdown list with decks
 --Fix display for many cards at once
 --Actually useful sample decks
 --Take functions out of Vue declaration, declare them ahead of time then copy in Vue like with the data
@@ -15,10 +12,46 @@ TO DO:
 (final touches)
 --Fully responsive design
 
+(theoretical second version)
+--Better method for filling the dropdown list with decks
+
+--side deck when making cards
+--load more than one custom deck
+--main mode can handle multiple decks
+
 (other)
 --Dice roller for FU/PbtA
 */
 
+function dropHandler(ev) {
+  console.log('File(s) dropped');
+
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
+
+  if (ev.dataTransfer.items) {
+    // Use DataTransferItemList interface to access the file(s)
+    for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+      // If dropped items aren't files, reject them
+      if (ev.dataTransfer.items[i].kind === 'file') {
+        var file = ev.dataTransfer.items[i].getAsFile();
+        console.log('... file[' + i + '].name = ' + file.name);
+      }
+    }
+  } else {
+    // Use DataTransfer interface to access the file(s)
+    for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+      console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+    }
+  }
+}
+
+function dragoverHandler(ev) {
+  console.log('File(s) in drop zone'); 
+
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
+}
 
 function exportToJsonFile() {
   let jsonData = this.decks.customDeck;
@@ -197,6 +230,8 @@ let app = new Vue({
           this.viewMode = "main"
         }
       },
-      exportToJsonFile: exportToJsonFile
+      exportToJsonFile: exportToJsonFile,
+      dropHandler: dropHandler,
+      dragoverHandler: dragoverHandler
     }
 })

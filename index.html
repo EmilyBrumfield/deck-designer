@@ -91,6 +91,9 @@
             <button v-on:click="addCard">Add</button>
             <button v-on:click="exportToJsonFile">Export</button>
             <a id="downloadThing"></a>
+            <div id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
+              <p>Drag one or more files to this Drop Zone ...</p>
+            </div>
           </div>
         </div>
         <div class="row">
