@@ -35,13 +35,11 @@ function dropHandler(ev) {
     // Use DataTransferItemList interface to access the file(s)
     if (ev.dataTransfer.items.length > 1) {
       alert("Cannot load multiple files.")
-    } else {
-      for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-        // If dropped items aren't files, reject them
-        if (ev.dataTransfer.items[i].kind === 'file') {
-          var file = ev.dataTransfer.items[i].getAsFile();
-          console.log('... file[' + i + '].name = ' + file.name);
-        }
+    } else {   
+      // If dropped items aren't files, reject them
+      if (ev.dataTransfer.items[0].kind === 'file') {
+        var file = ev.dataTransfer.items[0].getAsFile();
+        console.log('... file.name = ' + file.name);
       }
     }
   } else {
@@ -49,9 +47,7 @@ function dropHandler(ev) {
     if (ev.dataTransfer.files.length > 1) {
       alert("Cannot load multiple files.")
     } else {
-      for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-       console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-      }
+      console.log('... file.name = ' + ev.dataTransfer.files[0].name);
     }
   }
 }
