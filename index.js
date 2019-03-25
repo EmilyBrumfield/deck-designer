@@ -37,12 +37,17 @@ function dropHandler(ev) {
       alert("Cannot load multiple files.")
     } else {   
       // If dropped items aren't files, reject them
+
       if (ev.dataTransfer.items[0].kind === 'file') {
+        let fileText = "";
         var file = ev.dataTransfer.items[0].getAsFile();
         console.log('Item file.name = ' + file.name);
         let reader = new FileReader();
         reader.onload = function (event) {
-          console.log(event.target.result);
+          fileText = event.target.result;
+          console.log(fileText)
+          decks.customDeck = JSON.parse(fileText);
+//          console.log(event.target.result);
         };
         reader.readAsText(file);
       }
@@ -52,12 +57,15 @@ function dropHandler(ev) {
     if (ev.dataTransfer.files.length > 1) {
       alert("Cannot load multiple files.")
     } else {
+      let fileText = "";
       console.log('... file.name = ' + ev.dataTransfer.files[0].name);
       var file = ev.dataTransfer.files[0].getAsFile();
       console.log('Item file.name = ' + file.name);
       let reader = new FileReader();
       reader.onload = function (event) {
-        console.log(event.target.result);
+          fileText = event.target.result;
+          console.log(fileText);
+          decks.customDeck = JSON.parse(fileText);
       };
       reader.readAsText(file);
     }
