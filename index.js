@@ -39,7 +39,12 @@ function dropHandler(ev) {
       // If dropped items aren't files, reject them
       if (ev.dataTransfer.items[0].kind === 'file') {
         var file = ev.dataTransfer.items[0].getAsFile();
-        console.log('... file.name = ' + file.name);
+        console.log('Item file.name = ' + file.name);
+        let reader = new FileReader();
+        reader.onload = function (event) {
+          console.log(event.target.result);
+        };
+        reader.readAsText(file);
       }
     }
   } else {
@@ -48,6 +53,13 @@ function dropHandler(ev) {
       alert("Cannot load multiple files.")
     } else {
       console.log('... file.name = ' + ev.dataTransfer.files[0].name);
+      var file = ev.dataTransfer.files[0].getAsFile();
+      console.log('Item file.name = ' + file.name);
+      let reader = new FileReader();
+      reader.onload = function (event) {
+        console.log(event.target.result);
+      };
+      reader.readAsText(file);
     }
   }
 }
