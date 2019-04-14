@@ -29,7 +29,7 @@
       <div v-if="viewMode === 'main'">
         <span style="background-color: white">Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
         <div class="row">
-          <div class="col">
+          <div class="col-2">
             <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="deck-card">
               <div class="deck-card-header" v-bind:style="{color: 'purple'}">
                 DECK
