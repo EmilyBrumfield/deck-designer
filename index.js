@@ -69,18 +69,18 @@ function changeMode() {
 }
 
 function dropHandler(ev) {
-  console.log('File(s) dropped');
+  console.log("File(s) dropped");
   ev.preventDefault();
+  let fileText = "";
 
-  if (ev.dataTransfer.items) {    
+  if (ev.dataTransfer.items) {
     if (ev.dataTransfer.items.length > 1) {
       alert("Cannot load multiple files.");
     }
-    else {   
-      if (ev.dataTransfer.items[0].kind === 'file') {
-        let fileText = "";
-        var file = ev.dataTransfer.items[0].getAsFile();
-        console.log('Item file.name = ' + file.name);
+    else {
+      if (ev.dataTransfer.items[0].kind === "file") {
+        let file = ev.dataTransfer.items[0].getAsFile();
+        console.log("Item file.name = " + file.name);
         let reader = new FileReader();
         reader.onload = function (event) {
           fileText = event.target.result;
@@ -90,17 +90,17 @@ function dropHandler(ev) {
         reader.readAsText(file);
       }
     }
-  } 
+  }
 
   else {
     if (ev.dataTransfer.files.length > 1) {
-      alert("Cannot load multiple files.")
+      alert("Cannot load multiple files.");
     }
     else {
-      let fileText = "";
-      console.log('... file.name = ' + ev.dataTransfer.files[0].name);
-      var file = ev.dataTransfer.files[0].getAsFile();
-      console.log('Item file.name = ' + file.name);
+
+      console.log("... file.name = " + ev.dataTransfer.files[0].name);
+      let file = ev.dataTransfer.files[0].getAsFile();
+      console.log("Item file.name = " + file.name);
       let reader = new FileReader();
       reader.onload = function (event) {
         fileText = event.target.result;
@@ -119,11 +119,11 @@ function dragoverHandler(ev) {
 function exportToJsonFile() {
   let jsonData = this.decks.customDeck;
   let dataStr = JSON.stringify(jsonData);
-  let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr); 
-  let exportFileDefaultName = 'customDeck.json';
-  let linkElement = document.getElementById('downloadThing');
-  linkElement.setAttribute('href', dataUri);
-  linkElement.setAttribute('download', exportFileDefaultName);
+  let dataUri = "data:application/json;charset=utf-8,"+ encodeURIComponent(dataStr);
+  let exportFileDefaultName = "customDeck.json";
+  let linkElement = document.getElementById("downloadThing");
+  linkElement.setAttribute("href", dataUri);
+  linkElement.setAttribute("download", exportFileDefaultName);
   linkElement.click();
 }
 
@@ -139,7 +139,7 @@ function Monster(body, title, color) {
   if (title === undefined) {
    this.title = "Monster";
   }
-  
+
   if (color === undefined) {
     this.color = "red";
   }
@@ -178,12 +178,10 @@ function Treasure(body, title, color) {
    this.title = "Treasure";
   }
 
-  
   if (color === undefined) {
     this.color = "green";
   }
 }
-
 
 let sampleDeck = [
   new Monster("1d8 bugbears approach."),
@@ -191,7 +189,7 @@ let sampleDeck = [
   new Event("The weather gets worse."),
   new Event("The weather gets better.", undefined, "purple"),
   {title: "Quest", body: "You discover a map to the Temple of Skulls, along with a key to its secret entrance.", color: "orange"}
-]
+];
 
 let cthulhuDeck = [
   new Monster("Cultists"),
@@ -203,7 +201,7 @@ let cthulhuDeck = [
   new Monster("Starspawn of Cthulhu"),
   new Monster("Dark Young"),
   new Monster("Gugs")
-]
+];
 
 let customDeck = [
   new Monster("Susie"),
@@ -212,13 +210,13 @@ let customDeck = [
   new Monster("Pumpkin"),
   new Event("Someone spilled grape juice"),
   new Event("Someone ate the dice")
-]
+];
 
 let decks = {
   cthulhuDeck: cthulhuDeck,
   sampleDeck: sampleDeck,
   customDeck: customDeck
-}
+};
 
 let deck = decks.cthulhuDeck;
 
@@ -228,7 +226,7 @@ let data = {
   cards: [].concat(deck),
   drawn: [],
   viewMode: "maker"
-}
+};
 
 let app = new Vue({
     el: "#app",
@@ -245,4 +243,4 @@ let app = new Vue({
       dropHandler: dropHandler,
       dragoverHandler: dragoverHandler
     }
-})
+});
