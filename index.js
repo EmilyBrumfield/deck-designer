@@ -19,19 +19,64 @@ TO DO:
 --Dice roller for FU/PbtA
 */
 
+function setDeck(newDeck) {
+  this.deck = decks[newDeck];
+  this.resetDeck();
+}
+
+function resetDeck() {
+  this.cards = [].concat(this.deck);
+  this.drawn = [];
+}
+
+function drawCard() {
+  if (this.cards.length > 0) {
+    let randomNumber = Math.floor(Math.random() * this.cards.length);
+    this.drawn.unshift(this.cards[randomNumber]);
+    this.cards.splice(randomNumber, 1);
+  }
+}
+
+function addCard(title, color, body) {
+  let newCard = {
+    title: document.getElementById("card-title-input").value,
+    color: document.getElementById("card-color-input").value,
+    body: document.getElementById("card-body-input").value
+  };
+  this.decks.customDeck.unshift(newCard);
+}
+
+function removeCard(index) {
+  this.decks.customDeck.splice(index, 1);
+}
+
+function loadCard(index) {
+    document.getElementById("card-title-input").value = this.decks.customDeck[index].title;
+    document.getElementById("card-color-input").value = this.decks.customDeck[index].color;
+    document.getElementById("card-body-input").value = this.decks.customDeck[index].body;
+}
+
+function changeMode() {
+  if (this.viewMode === "main") {
+    this.viewMode = "maker";
+  }
+  else if (this.viewMode === "maker") {
+    this.viewMode = "deckDisplay";
+  }
+  else {
+    this.viewMode = "main";
+  }
+}
+
 function dropHandler(ev) {
   console.log('File(s) dropped');
-
-  // Prevent default behavior (Prevent file from being opened)
   ev.preventDefault();
 
   if (ev.dataTransfer.items) {    
-    // Use DataTransferItemList interface to access the file(s)
     if (ev.dataTransfer.items.length > 1) {
-      alert("Cannot load multiple files.")
-    } else {   
-      // If dropped items aren't files, reject them
-
+      alert("Cannot load multiple files.");
+    }
+    else {   
       if (ev.dataTransfer.items[0].kind === 'file') {
         let fileText = "";
         var file = ev.dataTransfer.items[0].getAsFile();
@@ -39,27 +84,28 @@ function dropHandler(ev) {
         let reader = new FileReader();
         reader.onload = function (event) {
           fileText = event.target.result;
-          console.log(fileText)
+          console.log(fileText);
           decks.customDeck = JSON.parse(fileText);
-//          console.log(event.target.result);
         };
         reader.readAsText(file);
       }
     }
-  } else {
-    // Use DataTransfer interface to access the file(s)
+  } 
+
+  else {
     if (ev.dataTransfer.files.length > 1) {
       alert("Cannot load multiple files.")
-    } else {
+    }
+    else {
       let fileText = "";
       console.log('... file.name = ' + ev.dataTransfer.files[0].name);
       var file = ev.dataTransfer.files[0].getAsFile();
       console.log('Item file.name = ' + file.name);
       let reader = new FileReader();
       reader.onload = function (event) {
-          fileText = event.target.result;
-          console.log(fileText);
-          decks.customDeck = JSON.parse(fileText);
+        fileText = event.target.result;
+        console.log(fileText);
+        decks.customDeck = JSON.parse(fileText);
       };
       reader.readAsText(file);
     }
@@ -67,37 +113,21 @@ function dropHandler(ev) {
 }
 
 function dragoverHandler(ev) {
-  console.log('File(s) in drop zone'); 
-
-  // Prevent default behavior (Prevent file from being opened)
   ev.preventDefault();
 }
 
 function exportToJsonFile() {
   let jsonData = this.decks.customDeck;
   let dataStr = JSON.stringify(jsonData);
-  let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-  
+  let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr); 
   let exportFileDefaultName = 'customDeck.json';
-  
   let linkElement = document.getElementById('downloadThing');
   linkElement.setAttribute('href', dataUri);
   linkElement.setAttribute('download', exportFileDefaultName);
   linkElement.click();
 }
 
-/*CHANGE THE DROPHANDLER AND JSONEXPORTER
-********************************************************************************
-********************************************************************************
-********************************************************************************
-********************************************************************************
-********************************************************************************
-********************************************************************************
-********************************************************************************
-*/
-
 function Monster(body, title, color) {
-
   this.body = body;
   this.title = title;
   this.color = color;
@@ -109,7 +139,6 @@ function Monster(body, title, color) {
   if (title === undefined) {
    this.title = "Monster";
   }
-
   
   if (color === undefined) {
     this.color = "red";
@@ -129,7 +158,6 @@ function Event(body, title, color) {
   if (title === undefined) {
    this.title = "Event";
   }
-
   
   if (color === undefined) {
     this.color = "blue";
@@ -206,50 +234,13 @@ let app = new Vue({
     el: "#app",
     data: data,
     methods: {
-      setDeck: function (newDeck) {
-        this.deck = decks[newDeck];
-        this.resetDeck();
-      },
-      resetDeck: function () {  //resets Cards to the default deck, clears Drawn cards
-        this.cards = [].concat(this.deck);
-        this.drawn = [];
-      },
-      drawCard: function () {  //draws a random card from Cards, adds it to Drawn
-        if (this.cards.length > 0) {
-          let randomNumber = Math.floor(Math.random() * this.cards.length)
-          //this variant reverses the order drawn cards are displayed: this.drawn = this.drawn.concat(this.cards[randomNumber]);
-          this.drawn.unshift(this.cards[randomNumber]) 
-          this.cards.splice(randomNumber, 1); //I prefer using immutable alternatives to splice, but this is much more efficient here
-        }
-      },
-      addCard: function (title, color, body) { //adds custom card to deck
-        let newCard = {
-          title: document.getElementById("card-title-input").value,
-          color: document.getElementById("card-color-input").value,
-          body: document.getElementById("card-body-input").value
-
-        };
-        this.decks.customDeck.unshift(newCard)
-      },
-      removeCard: function (index) { //removes custom card from deck
-          this.decks.customDeck.splice(index, 1)
-      },
-      loadCard: function (index) { //adds current card's data to the card maker; the reverse of addCard
-        document.getElementById("card-title-input").value = this.decks.customDeck[index].title;
-        document.getElementById("card-color-input").value = this.decks.customDeck[index].color;
-        document.getElementById("card-body-input").value = this.decks.customDeck[index].body;
-      },          
-      changeMode: function() {
-        if (this.viewMode === "main") {
-          this.viewMode = "maker"
-        }
-        else if (this.viewMode === "maker") {
-          this.viewMode = "deckDisplay"
-        }
-        else {
-          this.viewMode = "main"
-        }
-      },
+      setDeck: setDeck,
+      resetDeck: resetDeck,
+      drawCard: drawCard,
+      addCard: addCard,
+      removeCard: removeCard,
+      loadCard: loadCard,
+      changeMode: changeMode,
       exportToJsonFile: exportToJsonFile,
       dropHandler: dropHandler,
       dragoverHandler: dragoverHandler
