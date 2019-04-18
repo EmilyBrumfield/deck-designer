@@ -192,7 +192,6 @@ let sampleDeck = [
 ];
 
 let cthulhuDeck = [
-  new Monster("Cultists"),
   new Monster("Deep Ones"),
   new Monster("Ghouls"),
   new Monster("Mi-go"),
@@ -204,12 +203,9 @@ let cthulhuDeck = [
 ];
 
 let customDeck = [
-  new Monster("Susie"),
-  new Treasure("Dice"),
-  new Treasure("Pie"),
-  new Monster("Pumpkin"),
-  new Event("Someone spilled grape juice"),
-  new Event("Someone ate the dice")
+  new Monster("Sample Monster"),
+  new Treasure("Sample Treasure"),
+  new Event("Sample Event"),
 ];
 
 let decks = {
@@ -229,18 +225,18 @@ let data = {
 };
 
 let app = new Vue({
-    el: "#app",
-    data: data,
-    methods: {
-      setDeck: setDeck,
-      resetDeck: resetDeck,
-      drawCard: drawCard,
-      addCard: addCard,
-      removeCard: removeCard,
-      loadCard: loadCard,
-      changeMode: changeMode,
-      exportToJsonFile: exportToJsonFile,
-      dropHandler: dropHandler,
-      dragoverHandler: dragoverHandler
-    }
+  el: "#app",
+  data: data,
+  methods: {
+    setDeck: setDeck,
+    resetDeck: resetDeck,
+    drawCard: drawCard,
+    addCard: addCard,
+    removeCard: removeCard,
+    loadCard: loadCard,
+    changeMode: changeMode,
+    exportToJsonFile: exportToJsonFile,
+    dropHandler: dropHandler,
+    dragoverHandler: dragoverHandler
+  }
 });
