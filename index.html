@@ -17,11 +17,11 @@
       href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
     />
     
-    <title>Unnamed Card Drawing App</title>
+    <title>Deck Designer</title>
   </head>
   <body>
 
-    <div id="app" class="container-fluid">
+    <div id="app" class="container-fluid"  id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
     <button v-on:click="changeMode">Mode</button>
     <br />
     <br />
@@ -69,6 +69,7 @@
       </div>
     <!--- CARD MAKER SCREEN -->
       <div v-else-if="viewMode === 'maker'">
+          <div class="instructions">To import a custom deck, drag the file to any point on the page above the Add/Export buttons.</div>
         <br />
         <div class="row">  
           <div class="col-1"><label for="card-title-input">Card Title: </label></div>
@@ -91,9 +92,6 @@
             <button v-on:click="addCard">Add</button>
             <button v-on:click="exportToJsonFile">Export</button>
             <a id="downloadThing"></a>
-            <div id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
-              <p>Drag one data file to this Drop Zone ...</p>
-            </div>
           </div>
         </div>
         <div class="row">

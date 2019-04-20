@@ -49,7 +49,7 @@ input {
     display: inline-flex;
 }
 
-#drop-zone {
+.instructions {
     background-color: white;
-    height: 15vw;
+    color: black;
 }
