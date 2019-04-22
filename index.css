@@ -1,13 +1,11 @@
 html {
-    background-image: url("./background.jpg");
+    background-color: white;
+    color: #003300;
 }
 
 #app {
-    background-image: url("./background.jpg");
-}
-
-label {
-    background-color: white
+    background-color: white;
+    color: #003300;
 }
 
 textarea {
@@ -18,6 +16,16 @@ textarea {
 
 input {
     width: 15vw;
+}
+
+.mode-header {
+    text-align: center;
+}
+
+.mode-button {
+    width: 12vw;
+    height: 3vw;
+    font-size: 1.25em;
 }
 
 .deck-card {
@@ -47,9 +55,4 @@ input {
 
 .deck-drawn {
     display: inline-flex;
-}
-
-.instructions {
-    background-color: white;
-    color: black;
 }

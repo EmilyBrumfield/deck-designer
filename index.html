@@ -22,12 +22,12 @@
   <body>
 
     <div id="app" class="container-fluid"  id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
-    <button v-on:click="changeMode">Mode</button>
+    <button v-on:click="changeMode" class="mode-button">Mode</button>
     <br />
     <br />
     <!--- MAIN SCREEN -->
       <div v-if="viewMode === 'main'">
-        <span style="background-color: white">Click deck to draw, right-click to reset. Top-left drawn card is most recent.</span>
+        <h1 class="mode-header">Card Draw</h1>
         <div class="row">
           <div class="col-2">
             <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="deck-card">
@@ -69,7 +69,7 @@
       </div>
     <!--- CARD MAKER SCREEN -->
       <div v-else-if="viewMode === 'maker'">
-          <div class="instructions">To import a custom deck, drag the file to any point on the page above the Add/Export buttons.</div>
+        <h1 class="mode-header">Card Maker</h1>
         <br />
         <div class="row">  
           <div class="col-1"><label for="card-title-input">Card Title: </label></div>
@@ -112,6 +112,7 @@
       </div>
       <!--- DECK DISPLAY SCREEN -->
       <div v-else-if="viewMode === 'deckDisplay'">
+        <h1 class="mode-header">Deck View</h1>
         <div class="row">
           <div class="col">
             <div>
@@ -140,6 +141,37 @@
               </div>
               <br />
             </li>
+          </div>
+        </div>
+      </div>
+      <!--- HELP SCREEN -->
+      <div v-else-if="viewMode === 'help'">
+        <h1 class="mode-header">Instructions</h1>
+        <div class="row">
+          <div class="col">
+            <h2>Pre-Alpha</h2>
+            --This is a pre-alpha version of the UI.<br />
+            --Sorry for the mess.<br />
+            <br />
+
+            <h2>Card Draw</h2>
+            --Left click the deck to draw a card.<br />
+            --Right click the deck to shuffle all cards into the deck.<br />
+            --Use the deck dropdown to change decks.<br />
+            --(pre-alpha issues) If the custom deck has the wrong cards, use the deck dropdown to select it again.<br />
+            --The top-left card is the most recently drawn.</br>
+            <br/>
+
+            <h2>Card Maker</h2>
+            --The title can be any string.<br />
+            --The color can be any valid color preset or valid HTML color code (such as #FF0000).<br />
+            --The text can be anything but should fit in the box.<br />
+            --To add a card to the deck, click the Add button.<br />
+            --To delete a card from the deck, right click the card in the card display below.<br />
+            --To load a card's information into the card maker, left click the card in the card display below.<br />
+            --To edit a card, load its information with a left click, change it, add it as a new card, and delete the original card.<br />
+            --To save a custom deck, click the Export button.<br />
+            --To import a saved custom deck, drag the file to any spot above the card display below.<br />
           </div>
         </div>
       </div>

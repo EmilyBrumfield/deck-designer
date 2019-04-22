@@ -58,10 +58,13 @@ function loadCard(index) {
 
 function changeMode() {
   if (this.viewMode === "main") {
+    this.viewMode = "deckDisplay";
+  }
+  else if (this.viewMode === "deckDisplay") {
     this.viewMode = "maker";
   }
   else if (this.viewMode === "maker") {
-    this.viewMode = "deckDisplay";
+    this.viewMode = "help";
   }
   else {
     this.viewMode = "main";
@@ -221,7 +224,7 @@ let data = {
   deck: deck,
   cards: [].concat(deck),
   drawn: [],
-  viewMode: "maker"
+  viewMode: "main"
 };
 
 let app = new Vue({
