@@ -130,81 +130,6 @@ function exportToJsonFile() {
   linkElement.click();
 }
 
-function Monster(body, title, color) {
-  this.body = body;
-  this.title = title;
-  this.color = color;
-
-  if (body === undefined) {
-    this.body = "Monsters appear!";
-  }
-
-  if (title === undefined) {
-   this.title = "Monster";
-  }
-
-  if (color === undefined) {
-    this.color = "red";
-  }
-}
-
-function Event(body, title, color) {
-
-  this.body = body;
-  this.title = title;
-  this.color = color;
-
-  if (body === undefined) {
-    this.body = "Something happens!";
-  }
-
-  if (title === undefined) {
-   this.title = "Event";
-  }
-  
-  if (color === undefined) {
-    this.color = "blue";
-  }
-}
-
-function Treasure(body, title, color) {
-
-  this.body = body;
-  this.title = title;
-  this.color = color;
-
-  if (body === undefined) {
-    this.body = "Found treasure!";
-  }
-
-  if (title === undefined) {
-   this.title = "Treasure";
-  }
-
-  if (color === undefined) {
-    this.color = "green";
-  }
-}
-
-let sampleDeck = [
-  new Monster("1d8 bugbears approach."),
-  new Treasure("You find a potion of healing."),
-  new Event("The weather gets worse."),
-  new Event("The weather gets better.", undefined, "purple"),
-  {title: "Quest", body: "You discover a map to the Temple of Skulls, along with a key to its secret entrance.", color: "orange"}
-];
-
-let cthulhuDeck = [
-  new Monster("Deep Ones"),
-  new Monster("Ghouls"),
-  new Monster("Mi-go"),
-  new Monster("Shoggoth"),
-  new Monster("Chthonian"),
-  new Monster("Starspawn of Cthulhu"),
-  new Monster("Dark Young"),
-  new Monster("Gugs")
-];
-
 let playingDeck = [
   {"title":"Playing Card","color":"black","body":"King of Clubs"},{"title":"Playing Card","color":"black","body":"Queen of Clubs"},{"title":"Playing Card","color":"black","body":"Jack of Clubs"},{"title":"Playing Card","color":"black","body":"10 of Clubs"},{"title":"Playing Card","color":"black","body":"9 of Clubs"},{"title":"Playing Card","color":"black","body":"8 of Clubs"},{"title":"Playing Card","color":"black","body":"7 of Clubs"},{"title":"Playing Card","color":"black","body":"6 of Clubs"},{"title":"Playing Card","color":"black","body":"5 of Clubs"},{"title":"Playing Card","color":"black","body":"4 of Clubs"},{"title":"Playing Card","color":"black","body":"3 of Clubs"},{"title":"Playing Card","color":"black","body":"2 of Clubs"},{"title":"Playing Card","color":"black","body":"Ace of Clubs"},
   {"title":"Playing Card","color":"red","body":"King of Diamonds"},{"title":"Playing Card","color":"red","body":"Queen of Diamonds"},{"title":"Playing Card","color":"red","body":"Jack of Diamonds"},{"title":"Playing Card","color":"red","body":"10 of Diamonds"},{"title":"Playing Card","color":"red","body":"9 of Diamonds"},{"title":"Playing Card","color":"red","body":"8 of Diamonds"},{"title":"Playing Card","color":"red","body":"7 of Diamonds"},{"title":"Playing Card","color":"red","body":"6 of Diamonds"},{"title":"Playing Card","color":"red","body":"5 of Diamonds"},{"title":"Playing Card","color":"red","body":"4 of Diamonds"},{"title":"Playing Card","color":"red","body":"3 of Diamonds"},{"title":"Playing Card","color":"red","body":"2 of Diamonds"},{"title":"Playing Card","color":"red","body":"Ace of Diamonds"},
@@ -212,20 +137,17 @@ let playingDeck = [
   {"title":"Playing Card","color":"black","body":"King of Spades"},{"title":"Playing Card","color":"black","body":"Queen of Spades"},{"title":"Playing Card","color":"black","body":"Jack of Spades"},{"title":"Playing Card","color":"black","body":"10 of Spades"},{"title":"Playing Card","color":"black","body":"9 of Spades"},{"title":"Playing Card","color":"black","body":"8 of Spades"},{"title":"Playing Card","color":"black","body":"7 of Spades"},{"title":"Playing Card","color":"black","body":"6 of Spades"},{"title":"Playing Card","color":"black","body":"5 of Spades"},{"title":"Playing Card","color":"black","body":"4 of Spades"},{"title":"Playing Card","color":"black","body":"3 of Spades"},{"title":"Playing Card","color":"black","body":"2 of Spades"},{"title":"Playing Card","color":"black","body":"Ace of Spades"}
 ]
 
-let customDeck = [
-  new Monster("Sample Monster"),
-  new Treasure("Sample Treasure"),
-  new Event("Sample Event"),
-];
+let wanderingMonstersLevel1Deck = [{"title":"Monster","color":"red","body":"Zombie x 1d3"},{"title":"Monster","color":"red","body":"Troglodyte x 1d3"},{"title":"Monster","color":"red","body":"Stirge x 1d8"},{"title":"Monster","color":"red","body":"Spider (Crab Spider) x 1d2"},{"title":"Monster","color":"red","body":"Snake (Racer) x 1d2"},{"title":"Monster","color":"red","body":"Skeleton x 1d10"},{"title":"Monster","color":"red","body":"Orc x 1d6"},{"title":"NPCs","color":"blue","body":"NPC Party"},{"title":"Monster","color":"red","body":"Locust (Giant) x 1d6"},{"title":"Monster","color":"red","body":"Lizard (Giant Gecko) x 1d2"},{"title":"Monster","color":"red","body":"Kobold x 2d6"},{"title":"NPCs","color":"green","body":"Human (Commoner) x 1d3"},{"title":"NPCs","color":"green","body":"Human (Commoner) x 1d3"},{"title":"NPCs","color":"green","body":"Human (Commoner) x 1d3"},{"title":"NPCs","color":"green","body":"Human (Commoner) x 1d3"},{"title":"Monster","color":"red","body":"Human (Bandit) x 1d6"},{"title":"Monster","color":"red","body":"Goblin x 1d6"},{"title":"Monster","color":"red","body":"Ghoul x 1d2"},{"title":"Monster","color":"red","body":"Centipede (Giant) x 1d6"},{"title":"Monster","color":"red","body":"Beetle (Giant Fire) x 1d6"}]
+
+let customDeck = [{"title":"Sample Card","color":"blue","body":"Sample body text."}];
 
 let decks = {
-  cthulhuDeck: cthulhuDeck,
-  sampleDeck: sampleDeck,
   playingDeck: playingDeck,
+  wanderingMonstersLevel1Deck: wanderingMonstersLevel1Deck,
   customDeck: customDeck
 };
 
-let deck = decks.cthulhuDeck;
+let deck = decks.wanderingMonstersLevel1Deck;
 
 let data = {
   decks: decks,
