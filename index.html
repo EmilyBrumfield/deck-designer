@@ -22,19 +22,19 @@
   <body>
 
     <div id="app" class="container-fluid"  id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
-    <button v-on:click="changeMode" class="mode-button">Mode</button>
+    <button v-on:click="changeMode" class="mode__button">Mode</button>
     <br />
     <br />
     <!--- MAIN SCREEN -->
-      <div v-if="viewMode === 'main'">
-        <h1 class="mode-header">Card Draw</h1>
+      <div v-if="viewMode === 'main'" class="mode">
+        <h1 class="mode__header">Card Draw</h1>
         <div class="row">
           <div class="col-2">
-            <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="deck-card">
-              <div class="deck-card-header" v-bind:style="{color: 'purple'}">
+            <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="playing-card">
+              <div class="playing-card__header" v-bind:style="{color: 'purple'}">
                 DECK
               </div>
-              <div class="deck-card-body deck-card-number">
+              <div class="playing-card__body playing-card__number">
                 {{cards.length}}
               </div>
             </div>
@@ -53,12 +53,12 @@
             </div>
           </div>
           <div class="col-10">
-            <li v-for="card in drawn" class="deck-drawn">
-              <div class="deck-card">
-                <div class="deck-card-header" v-bind:style="{color: card.color}">
+            <li v-for="card in drawn" class="playing-card__drawn">
+              <div class="playing-card">
+                <div class="playing-card__header" v-bind:style="{color: card.color}">
                   {{card.title}}
                 </div>
-                <div class="deck-card-body">
+                <div class="playing-card__body">
                   {{card.body}}
                 </div>
               </div>
@@ -68,23 +68,23 @@
         </div>
       </div>
     <!--- CARD MAKER SCREEN -->
-      <div v-else-if="viewMode === 'maker'">
-        <h1 class="mode-header">Card Maker</h1>
+      <div v-else-if="viewMode === 'maker'" class="mode">
+        <h1 class="mode__header">Card Maker</h1>
         <br />
         <div class="row">  
           <div class="col-1"><label for="card-title-input">Card Title: </label></div>
-          <div class="col-2"><input type="text" value="Monster" id="card-title-input"></input></div>
+          <div class="col-2"><input type="text" value="Monster" id="card-title-input" class="mode__input"></input></div>
         </div>
         <div class="row">  
             <div class="col-1"><label for="card-color-input">Card Title Color: </label></div>
-            <div class="col-2"><input type="text" value="red" id="card-color-input"></input></div>
+            <div class="col-2"><input type="text" value="red" id="card-color-input" class="mode__input"></input></div>
         </div>
         <div class="row">  
           <div class="col-1">
             <label for="card-body-input">Card Body: </label>
           </div>
           <div class="col-2">
-            <textarea id="card-body-input"></textarea>
+            <textarea id="card-body-input" class="mode__textarea"></textarea>
           </div>
         </div>
         <div class="row">
@@ -96,12 +96,12 @@
         </div>
         <div class="row">
           <div class="col-10">
-            <li v-for="(card, index) in decks.customDeck" class="deck-drawn">
-              <div class="deck-card" v-on:click="loadCard(index)" v-on:click.right.prevent="removeCard(index)">
-                <div class="deck-card-header" v-bind:style="{color: card.color}">
+            <li v-for="(card, index) in decks.customDeck" class="playing-card__drawn">
+              <div class="playing-card" v-on:click="loadCard(index)" v-on:click.right.prevent="removeCard(index)">
+                <div class="playing-card__header" v-bind:style="{color: card.color}">
                   {{card.title}}
                 </div>
-                <div class="deck-card-body">
+                <div class="playing-card__body">
                   {{card.body}}
                 </div>
               </div>
@@ -111,8 +111,8 @@
         </div>
       </div>
       <!--- DECK DISPLAY SCREEN -->
-      <div v-else-if="viewMode === 'deckDisplay'">
-        <h1 class="mode-header">Deck View</h1>
+      <div v-else-if="viewMode === 'deckDisplay'" class="mode">
+        <h1 class="mode__header">Deck View</h1>
         <div class="row">
           <div class="col">
             <div>
@@ -130,12 +130,12 @@
             </div>    
           </div>
           <div class="col-10">
-            <li v-for="(card, index) in deck" class="deck-drawn">
-              <div class="deck-card">
-                <div class="deck-card-header" v-bind:style="{color: card.color}">
+            <li v-for="(card, index) in deck" class="playing-card__drawn">
+              <div class="playing-card">
+                <div class="playing-card__header" v-bind:style="{color: card.color}">
                   {{card.title}}
                 </div>
-                <div class="deck-card-body">
+                <div class="playing-card__body">
                   {{card.body}}
                 </div>
               </div>
@@ -145,8 +145,8 @@
         </div>
       </div>
       <!--- HELP SCREEN -->
-      <div v-else-if="viewMode === 'help'">
-        <h1 class="mode-header">Instructions</h1>
+      <div v-else-if="viewMode === 'help'" class="mode">
+        <h1 class="mode__header">Instructions</h1>
         <div class="row">
           <div class="col">
             <h2>Pre-Alpha</h2>

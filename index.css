@@ -8,27 +8,33 @@ html {
     color: #003300;
 }
 
-textarea {
-    height: 12vw;
-    padding: 1vw;
-    width: 15vw;
+.mode {
+    background-color: white;
 }
 
-input {
-    width: 15vw;
-}
-
-.mode-header {
-    text-align: center;
-}
-
-.mode-button {
+.mode__button {
     width: 12vw;
     height: 3vw;
     font-size: 1.25em;
 }
 
-.deck-card {
+.mode__header {
+    text-align: center;
+}
+
+.mode__input {
+    width: 15vw;
+}
+
+.mode__textarea {
+    height: 12vw;
+    padding: 1vw;
+    width: 15vw;
+}
+
+/*"card" is a reserved term with these frameworks and libraries, so I'm using "playing-card" to disambiguate*/
+
+.playing-card {
     border: 1px solid black;
     background-color: white;
     width: 15vw;
@@ -36,23 +42,23 @@ input {
     border-radius: 20px;
 }
 
-.deck-card-header {
+.playing-card__header {
     font-size: 2em;
     text-align: center;
     border-collapse: separate;
 }
 
-.deck-card-body {
+.playing-card__body {
     height: 12vw;
     padding: 1vw;
     border-collapse: separate;
 }
 
-.deck-card-number {
+.playing-card__number {
     text-align: center;
     font-size: 3em;
 }
 
-.deck-drawn {
+.playing-card__drawn {
     display: inline-flex;
 }
