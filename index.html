@@ -40,6 +40,9 @@
             </div>
             <div>
               <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
+                <b-dropdown-item-button v-on:click="setDeck('playingDeck')">
+                  Playing Cards
+                </b-dropdown-item-button>
                 <b-dropdown-item-button v-on:click="setDeck('sampleDeck')">
                   Sample Deck
                 </b-dropdown-item-button>
@@ -117,6 +120,9 @@
           <div class="col">
             <div>
               <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
+                <b-dropdown-item-button v-on:click="setDeck('playingDeck')">
+                  Playing Cards
+                </b-dropdown-item-button>
                 <b-dropdown-item-button v-on:click="setDeck('sampleDeck')">
                   Sample Deck
                 </b-dropdown-item-button>
