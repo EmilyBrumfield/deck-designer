@@ -23,7 +23,7 @@
 
     <div id="app" class="container-fluid"  id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
     
-    <b-navbar type="dark" variant="info">
+    <b-navbar type="dark" variant="info" sticky="false">
       <b-button v-on:click="changeMode" size="lg">Mode</b-button>
       <b-dropdown id="ddDeck" text="Deck" class="m-md-2" size="lg">
           <b-dropdown-item-button v-on:click="setDeck('playingDeck')">
