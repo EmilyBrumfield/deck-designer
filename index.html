@@ -22,7 +22,22 @@
   <body>
 
     <div id="app" class="container-fluid"  id="drop-zone" v-on:drop.prevent="dropHandler($event);" v-on:dragover.prevent="dragoverHandler($event);">
-    <button v-on:click="changeMode" class="mode__button">Mode</button>
+    
+    <b-navbar type="dark" variant="info">
+      <b-button v-on:click="changeMode">Mode</b-button>
+      <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
+          <b-dropdown-item-button v-on:click="setDeck('playingDeck')">
+            Playing Cards
+          </b-dropdown-item-button>
+          <b-dropdown-item-button v-on:click="setDeck('wanderingMonstersLevel1Deck')">
+            Dark Dungeons: Wandering Monsters 1
+          </b-dropdown-item-button>
+          <b-dropdown-item-button v-on:click="setDeck('customDeck')">
+              Custom Deck
+            </b-dropdown-item-button>
+        </b-dropdown>
+    </b-navbar>
+
     <br />
     <br />
     <!--- MAIN SCREEN -->
@@ -37,19 +52,6 @@
               <div class="playing-card__body playing-card__number">
                 {{cards.length}}
               </div>
-            </div>
-            <div>
-              <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
-                <b-dropdown-item-button v-on:click="setDeck('playingDeck')">
-                  Playing Cards
-                </b-dropdown-item-button>
-                <b-dropdown-item-button v-on:click="setDeck('wanderingMonstersLevel1Deck')">
-                  Dark Dungeons: Wandering Monsters 1
-                </b-dropdown-item-button>
-                <b-dropdown-item-button v-on:click="setDeck('customDeck')">
-                    Custom Deck
-                  </b-dropdown-item-button>
-              </b-dropdown>
             </div>
           </div>
           <div class="col-10">
@@ -114,21 +116,6 @@
       <div v-else-if="viewMode === 'deckDisplay'" class="mode">
         <h1 class="mode__header">Deck View</h1>
         <div class="row">
-          <div class="col">
-            <div>
-              <b-dropdown id="ddDeck" text="Deck" class="m-md-2">
-                <b-dropdown-item-button v-on:click="setDeck('playingDeck')">
-                  Playing Cards
-                </b-dropdown-item-button>
-                <b-dropdown-item-button v-on:click="setDeck('wanderingMonstersLevel1Deck')">
-                  Dark Dungeons: Wandering Monsters 1
-                </b-dropdown-item-button>
-                <b-dropdown-item-button v-on:click="setDeck('customDeck')">
-                  Custom Deck
-                  </b-dropdown-item-button>
-              </b-dropdown>
-            </div>    
-          </div>
           <div class="col-10">
             <li v-for="(card, index) in deck" class="playing-card__drawn">
               <div class="playing-card">
