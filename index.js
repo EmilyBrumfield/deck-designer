@@ -1,8 +1,11 @@
 /*
 TO DO:
 
+(high priority)
+--Menu bar
+
 (low priority)
---Actually useful sample decks
+--More sample decks
 
 (final touches)
 --Make UI look professional
@@ -10,13 +13,8 @@ TO DO:
 
 (theoretical second version)
 --Better method for filling the dropdown list with decks
-
---side deck when making cards
 --load more than one custom deck
 --main mode can handle multiple decks
-
-(other)
---Dice roller for FU/PbtA
 */
 
 function setDeck(newDeck) {
