@@ -3,12 +3,6 @@
     background-color: white;
 }
 
-.mode__button {
-    width: 12vw;
-    height: 3vw;
-    font-size: 1.25em;
-}
-
 .mode__header {
     text-align: center;
 }
