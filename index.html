@@ -44,23 +44,23 @@
       <div v-if="viewMode === 'main'" class="mode">
         <h1 class="mode__header">Card Draw</h1>
         <div class="row">
-          <div class="col-2">
-            <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="playing-card">
-              <div class="playing-card__header" v-bind:style="{color: 'purple'}">
+          <div class="col-lg-2">
+            <div v-on:click="drawCard" v-on:click.right.prevent="resetDeck" class="playing-card w-100">
+              <div class="playing-card__header text-center" v-bind:style="{color: 'purple'}">
                 DECK
               </div>
-              <div class="playing-card__body playing-card__number">
+              <div class="playing-card__body playing-card__number text-center">
                 {{cards.length}}
               </div>
             </div>
           </div>
-          <div class="col-10">
-            <li v-for="card in drawn" class="playing-card__drawn">
-              <div class="playing-card">
-                <div class="playing-card__header" v-bind:style="{color: card.color}">
+          <div class="col-lg-10">
+            <li v-for="card in drawn" class="playing-card playing-card__drawn col-lg-2">
+              <div class="w-100">
+                <div class="playing-card__header text-center" v-bind:style="{color: card.color}">
                   {{card.title}}
                 </div>
-                <div class="playing-card__body">
+                <div class="playing-card__body text-center">
                   {{card.body}}
                 </div>
               </div>
@@ -117,17 +117,17 @@
         <h1 class="mode__header">Deck View</h1>
         <div class="row">
           <div class="col-10">
-            <li v-for="(card, index) in deck" class="playing-card__drawn">
-              <div class="playing-card">
-                <div class="playing-card__header" v-bind:style="{color: card.color}">
-                  {{card.title}}
+            <li v-for="card in deck" class="playing-card playing-card__drawn col-lg-2">
+                <div class="w-100">
+                  <div class="playing-card__header text-center" v-bind:style="{color: card.color}">
+                    {{card.title}}
+                  </div>
+                  <div class="playing-card__body text-center">
+                    {{card.body}}
+                  </div>
                 </div>
-                <div class="playing-card__body">
-                  {{card.body}}
-                </div>
-              </div>
-              <br />
-            </li>
+                <br />
+              </li>
           </div>
         </div>
       </div>
